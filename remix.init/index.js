@@ -4,7 +4,6 @@ const fs = require("fs/promises");
 const path = require("path");
 const inquirer = require("inquirer");
 
-const toml = require("@iarna/toml");
 const sort = require("sort-package-json");
 
 function escapeRegExp(string) {
