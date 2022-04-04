@@ -5,7 +5,7 @@ The Remix House Stack
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
 ```
-npx create-remix --template cephalization/house-stack
+npx create-remix --template https://github.com/cephalization/remix-house-stack
 ```
 
 ## What's in the stack
