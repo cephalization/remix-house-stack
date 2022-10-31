@@ -2,7 +2,7 @@
 
 ## What's inside?
 
-This Turborepo includes the following packages and apps:
+This Remix Starter includes a Turborepo that has the following packages and apps:
 
 ### Apps and Packages
 
@@ -18,7 +18,7 @@ Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Utilities
 
-This Turborepo has some additional tools already setup for you:
+This Remix Starter includes a Turborepo that has some additional tools already setup for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
