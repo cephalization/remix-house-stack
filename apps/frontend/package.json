@@ -6,7 +6,9 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "start": "remix-serve api/build"
+    "start": "remix-serve api/build",
+    "lint": "tsc --noEmit && TIMING=1 eslint \"./**/*.ts*\"",
+    "clean": "rm -rf .cache .turbo build public/build node_modules"
   },
   "dependencies": {
     "@remix-run/node": "^1.7.0",
