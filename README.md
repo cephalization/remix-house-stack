@@ -1,5 +1,13 @@
 # Remix House Stack
 
+## DISCLAIMERS
+
+- This stack is built off of `@remix-run/node@deferred` and `@remix-run/react@deferred`
+  - Pros:
+    - Streaming responses!
+  - Cons:
+    - Things break! (sometimes)
+
 ## What's inside?
 
 This Remix Starter includes a Turborepo that has the following packages and apps:
