@@ -50,11 +50,16 @@ export default function Index() {
             </p>
           }
         >
-          {(streaming) => (
-            <p className={clsx(textClasses, "text-green-600")}>
-              The API is streaming! Took {streaming.duration}.
-            </p>
-          )}
+          {(streaming) => {
+            // @ts-expect-error types are not yet complete for streaming data
+            const { duration } = streaming;
+
+            return (
+              <p className={clsx(textClasses, "text-green-600")}>
+                The API is streaming! Took {duration}.
+              </p>
+            );
+          }}
         </Await>
       </Suspense>
     </div>
