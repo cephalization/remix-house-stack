@@ -7,7 +7,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import styles from "~/styles.css";
+
+import styles from "./styles/app.css";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -15,7 +16,10 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
+  { rel: "stylesheet", href: styles },
+];
 
 export default function App() {
   return (
@@ -24,7 +28,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="sm:p-4">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
