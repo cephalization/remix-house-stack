@@ -26,7 +26,9 @@ This Remix Starter includes a Turborepo that has some additional tools already s
 
 ### Deployment
 
-(TODO) Railway via Docker
+- [x] Docker
+  - `build-containers.sh` will run the necessary commands to stand up the api and frontend containers using `docker-compose`
+- [ ] Railway
 
 ## Using this stack
 
