@@ -10,7 +10,7 @@
 
 ## What's inside?
 
-This Remix Starter includes a Turborepo that has the following packages and apps:
+This Remix Starter includes a [Turborepo](https://turbo.build/repo) that has the following packages and apps:
 
 ### Apps and Packages
 
@@ -45,3 +45,5 @@ Run the following command:
 ```sh
 npx create-remix@latest --template cephalization/remix-house-stack
 ```
+
+[Development Workflow](https://turbo.build/repo/docs/handbook/dev)
