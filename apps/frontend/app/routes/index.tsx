@@ -1,4 +1,4 @@
-import { defer, json } from "@remix-run/node";
+import { defer } from "@remix-run/node";
 import { Await, useLoaderData } from "@remix-run/react";
 import clsx from "clsx";
 import { Suspense } from "react";
@@ -7,17 +7,13 @@ import Link from "~/components/Link";
 import { getHealth, getStreamingHealth } from "~/data/health";
 
 export const loader = async () => {
-  try {
-    const health = getHealth();
-    const streaming = getStreamingHealth();
+  const health = getHealth();
+  const streaming = getStreamingHealth();
 
-    return defer({
-      health: await health,
-      streaming,
-    });
-  } catch (e) {
-    return json({ health: { ok: false }, streaming: { ok: false } });
-  }
+  return defer({
+    health: await health,
+    streaming,
+  });
 };
 
 const textClasses = "sm:pl-4 text-sm";
@@ -51,7 +47,6 @@ export default function Index() {
           }
         >
           {(streaming) => {
-            // @ts-expect-error types are not yet complete for streaming data
             const { duration } = streaming;
 
             return (

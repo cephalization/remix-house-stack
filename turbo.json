@@ -12,6 +12,18 @@
         "^build"
       ]
     },
+    "frontend#build": {
+      "env": [
+        "API_HOST"
+      ],
+      "outputs": [
+        "build/**",
+        "public/build/**"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
+    },
     "test": {
       "outputs": [
         "coverage/**"
