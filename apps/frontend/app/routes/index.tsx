@@ -1,26 +1,29 @@
-import { json, type LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { defer, json } from "@remix-run/node";
+import { Await, useLoaderData } from "@remix-run/react";
+import clsx from "clsx";
+import { Suspense } from "react";
+
 import Link from "~/components/Link";
+import { getHealth, getStreamingHealth } from "~/data/health";
 
-type Health = {
-  ok: boolean;
-  error?: Error;
-};
-
-const API = "http://localhost:5001/healthz";
-
-export const loader: LoaderFunction = async () => {
+export const loader = async () => {
   try {
-    const res = await fetch(API);
+    const health = getHealth();
+    const streaming = getStreamingHealth();
 
-    return json((await res.json()) as Health);
+    return defer({
+      health: await health,
+      streaming,
+    });
   } catch (e) {
-    return json({ ok: false, error: e });
+    return json({ health: { ok: false }, streaming: { ok: false } });
   }
 };
 
+const textClasses = "sm:pl-4 text-sm";
+
 export default function Index() {
-  const data = useLoaderData<Health>();
+  const data = useLoaderData<typeof loader>();
 
   return (
     <div className="p-4 sm:rounded-md bg-slate-200">
@@ -29,9 +32,31 @@ export default function Index() {
         Built With <Link to="https://turbo.build/repo">Turborepo</Link> +{" "}
         <Link to="https://remix.run/">Remix</Link>
       </p>
-      <p className="sm:pl-4 text-sm">
-        The API is {data?.ok ? "Running" : "Not Running"}
+      <p className={clsx(textClasses)}>
+        The API is {data.health.ok ? "Running" : "Not Running"}
       </p>
+      <Suspense
+        fallback={
+          <p className={clsx(textClasses, "text-yellow-600")}>
+            Loading streaming response, this will take a few seconds...
+          </p>
+        }
+      >
+        <Await
+          resolve={data.streaming}
+          errorElement={
+            <p className={clsx(textClasses, "text-red-400")}>
+              Unable to stream from API! Try restarting everything...
+            </p>
+          }
+        >
+          {(streaming) => (
+            <p className={clsx(textClasses, "text-green-600")}>
+              The API is streaming! Took {streaming.duration}.
+            </p>
+          )}
+        </Await>
+      </Suspense>
     </div>
   );
 }

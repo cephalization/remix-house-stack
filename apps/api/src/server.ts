@@ -16,6 +16,14 @@ export const createServer = () => {
     })
     .get("/healthz", (req, res) => {
       return res.json({ ok: true });
+    })
+    .get("/delayedhealth", async (req, res) => {
+      const requestStart = Date.now();
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      return res.json({
+        ok: true,
+        duration: `${(Date.now() - requestStart) / 1000}s`,
+      });
     });
 
   return app;
