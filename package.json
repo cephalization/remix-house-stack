@@ -8,8 +8,8 @@
     "build": "turbo run build",
     "clean": "turbo run clean",
     "dev": "turbo run dev --no-cache --parallel --continue",
-    "format": "rome format \"./\"",
-    "lint": "turbo run lint",
+    "format": "rome format --write \"./\"",
+    "lint": "turbo run lint; rome check \"./\"",
     "test": "turbo run test"
   },
   "devDependencies": {

@@ -9,7 +9,7 @@
     "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o ./app/styles/app.css",
     "start": "remix-serve build",
-    "lint": "tsc --noEmit && TIMING=1 eslint \"./**/*.ts*\"",
+    "lint": "tsc --noEmit",
     "clean": "rm -rf .cache .turbo build public/build node_modules"
   },
   "dependencies": {
@@ -28,8 +28,6 @@
     "@types/react-dom": "^18.0.8",
     "autoprefixer": "^10.4.13",
     "concurrently": "^7.5.0",
-    "eslint": "^8.26.0",
-    "eslint-config-custom": "*",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.17",
     "tailwind-config": "*",

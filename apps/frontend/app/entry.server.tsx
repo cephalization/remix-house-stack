@@ -14,7 +14,7 @@ export default function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
   // If the request is from a bot, we want to wait for the full
   // response to render before sending it to the client. This
@@ -24,7 +24,7 @@ export default function handleRequest(
       request,
       responseStatusCode,
       responseHeaders,
-      remixContext
+      remixContext,
     );
   }
 
@@ -32,7 +32,7 @@ export default function handleRequest(
     request,
     responseStatusCode,
     responseHeaders,
-    remixContext
+    remixContext,
   );
 }
 
@@ -40,7 +40,7 @@ function serveTheBots(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
   return new Promise((resolve, reject) => {
     const { pipe, abort } = renderToPipeableStream(
@@ -59,13 +59,13 @@ function serveTheBots(
             new Response(body, {
               status: responseStatusCode,
               headers: responseHeaders,
-            })
+            }),
           );
         },
         onShellError(err: unknown) {
           reject(err);
         },
-      }
+      },
     );
     setTimeout(abort, ABORT_DELAY);
   });
@@ -75,7 +75,7 @@ function serveBrowsers(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
   return new Promise((resolve, reject) => {
     let didError = false;
@@ -95,7 +95,7 @@ function serveBrowsers(
             new Response(body, {
               status: didError ? 500 : responseStatusCode,
               headers: responseHeaders,
-            })
+            }),
           );
         },
         onShellError(err: unknown) {
@@ -105,7 +105,7 @@ function serveBrowsers(
           didError = true;
           console.error(err);
         },
-      }
+      },
     );
     setTimeout(abort, ABORT_DELAY);
   });
