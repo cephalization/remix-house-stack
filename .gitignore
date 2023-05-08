@@ -1,3 +1,7 @@
+# REMOVE LOCKFILES FROM GITIGNORE
+package-lock.json
+yarn.lock
+
 .DS_Store
 node_modules
 .turbo

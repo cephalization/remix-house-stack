@@ -46,4 +46,9 @@ Run the following command:
 npx create-remix@latest --template cephalization/remix-house-stack
 ```
 
+Remove desired lockfile from `.gitignore`
+
+(I add them during development of the stack to prevent them from being committed to the repo, you should remove them from the `.gitignore` before committing your project)
+
+
 [Development Workflow](https://turbo.build/repo/docs/handbook/dev)
