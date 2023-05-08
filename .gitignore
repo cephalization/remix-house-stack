@@ -10,5 +10,4 @@ dist-ssr
 server/dist
 public/dist
 .turbo
-package-lock.json
 build
