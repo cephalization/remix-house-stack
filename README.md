@@ -2,11 +2,7 @@
 
 ## DISCLAIMERS
 
-- This stack is built off of `@remix-run/node@deferred` and `@remix-run/react@deferred`
-  - Pros:
-    - Streaming responses!
-  - Cons:
-    - Things break! (sometimes)
+- package lockfiles (package-lock, yarn.lock) are in gitignore, remove them before using this stuck for production!
 
 ## What's inside?
 
